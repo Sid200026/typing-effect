@@ -1,0 +1,13 @@
+.typing-effect__typewriter span {
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
