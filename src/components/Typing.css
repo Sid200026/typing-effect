@@ -11,3 +11,9 @@
     width: 100%;
   }
 }
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}

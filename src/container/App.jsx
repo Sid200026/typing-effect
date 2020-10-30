@@ -5,12 +5,12 @@ const App = () => {
   return (
     <Typing
       text={["lorem ipsum solor dot amet", "Lol me"]}
-      timeDelay={50}
+      typeSpeed={50}
       ignoreInitialDelay={false}
       suppressEmptyArray
       element="h2"
       styleClass="lolme"
-      letterSpacing={0.05}
+      letterSpacing={0.01}
       cursorThickness={0.12}
     />
   );
