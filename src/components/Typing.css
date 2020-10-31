@@ -1,6 +1,7 @@
 .typing-effect__typewriter span {
   overflow: hidden;
-  margin: 0 auto;
+  margin: 0 0;
+  padding: 0;
 }
 
 @keyframes typing {
@@ -15,5 +16,12 @@
 @keyframes blink {
   50% {
     border-color: transparent;
+  }
+}
+
+@keyframes stop-blink {
+  from,
+  to {
+    border-right: transparent;
   }
 }

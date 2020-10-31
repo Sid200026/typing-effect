@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 import "./Typing.css";
 
 /**
+ * @function Typing
  * A UI Component to render typing-effect
- * 
+ *
  * @param {string || array} text
  *  A string or an array of string to be displayed
  * @param {boolean} suppressEmptyArray
@@ -25,7 +26,14 @@ import "./Typing.css";
  *  Color of the cursor
  * @param {number} cursorPadding
  *  Distance between last word and cursor
- *
+ * @param {boolean} shouldDelete
+ *  Should display delete animation
+ * @param {number} deleteSpeed
+ *  Delete speed in milliseconds
+ * @param {number} blinkingSpeed
+ *  Blinking speed of cursor in milliseconds
+ * @param {boolean || number} disableBlinkingOnEnd
+ *  Disable blinking on end or wait for a few blinks
  */
 const Typing = (props) => {
   const {
@@ -39,26 +47,33 @@ const Typing = (props) => {
     cursorThickness,
     cursorColor,
     cursorPadding,
+    shouldDelete,
+    deleteSpeed,
+    blinkingSpeed,
+    disableBlinkingOnEnd,
   } = props;
 
   let firstText = "";
   if (Array.isArray(text)) {
+    // Checks if array of text is passed
     if (text.length === 0) {
+      // If array is empty either ignore or throw error
       if (!suppressEmptyArray) {
         throw new Error("Text Array cannot be empty");
       } else {
         if (suppressEmptyArray && ignoreInitialDelay) {
+          // Cannot suppressEmptyArray and ignoreInitialDelay
           throw new Error(
             "suppressEmptyArray and ignoreInitialDelay cannot be both true"
           );
         }
-        firstText = "";
+        firstText = ""; // If suppressEmptyArray is set
       }
     } else {
-      firstText = text[0];
+      firstText = text[0]; // Choose the first text in the array
     }
   } else {
-    firstText = text;
+    firstText = text; // If a string is passed
   }
 
   /******************* INITIAL CONFIGURATION *******************/
@@ -66,9 +81,11 @@ const Typing = (props) => {
     index: 0,
     text: firstText,
     length: ignoreInitialDelay ? 1 : 0,
+    isDeleting: false,
   };
 
   const [currentText, setCurrentText] = useState(initialState);
+  const [isComplete, setIsComplete] = useState(false);
 
   const timer = useRef(null);
 
@@ -82,43 +99,109 @@ const Typing = (props) => {
     }
   };
 
+  // React Callback function used to update the rendered text
   const updateText = useCallback(() => {
     const currentTextContent = currentText.text;
     const currentTextLength = currentText.length;
+    const currentIndex = currentText.index;
+
     if (currentTextContent.length === currentTextLength) {
+      // Check if end of text has been reached
       if (Array.isArray(text)) {
-        const currentIndex = currentText.index;
+        // If array go for the next text
         if (currentIndex >= text.length - 1) {
+          // If it was the last text in the array
+          setIsComplete(true);
           unmountTimer();
           return false;
         } else {
-          setCurrentText({
-            index: currentIndex + 1,
-            text: text[currentIndex + 1],
-            length: ignoreInitialDelay ? 1 : 0,
-          });
+          if (shouldDelete) {
+            // If shouldDelete is true, start deleting characters
+            setCurrentText({
+              ...currentText,
+              length: currentTextLength - 1,
+              isDeleting: true,
+            }); // Start decrementing the length
+          } else {
+            setCurrentText({
+              index: currentIndex + 1,
+              text: text[currentIndex + 1],
+              length: ignoreInitialDelay ? 1 : 0,
+              isDeleting: false,
+            });
+          }
           return true;
         }
       } else {
+        // If for a string, the entire text is covered unmount timer
+        setIsComplete(true);
+        unmountTimer();
         return false;
       }
-    } else {
-      setCurrentText({ ...currentText, length: currentTextLength + 1 });
+    }
+    if (currentTextLength === 0 && currentText.isDeleting) {
+      // Entire text has been deleted then switch to the next text
+      setCurrentText({
+        index: currentIndex + 1,
+        text: text[currentIndex + 1],
+        length: ignoreInitialDelay ? 1 : 0,
+        isDeleting: false,
+      });
       return true;
     }
-  }, [currentText, text, ignoreInitialDelay]);
+    if (currentText.isDeleting) {
+      setCurrentText({ ...currentText, length: currentTextLength - 1 }); // Decrement the length in other case
+    } else {
+      setCurrentText({ ...currentText, length: currentTextLength + 1 }); // Increment the length in other case
+    }
+    return true;
+  }, [currentText, text, shouldDelete, ignoreInitialDelay]);
+
+  // Decide whether to set delete speed or type speed
+  const setTimeOutSpeed = currentText.isDeleting ? deleteSpeed : typeSpeed;
 
   useEffect(() => {
-    timer.current = setTimeout(updateText, typeSpeed);
+    timer.current = setTimeout(updateText, setTimeOutSpeed);
     return unmountTimer;
-  }, [updateText, typeSpeed]);
+  }, [updateText, setTimeOutSpeed]);
 
   const stringToRender = currentText.text.substr(0, currentText.length); // Slice a portion of the string
 
   /******************* STYLE CONFIGURATION *******************/
-  const animationStyleConfig = `typing ${
-    typeSpeed / 1000
-  }s steps(20, end), blink 1s steps(1) infinite`;
+
+  let animationStyleConfig = "";
+
+  if (isComplete) {
+    if (typeof disableBlinkingOnEnd === "boolean") {
+      // Check if a boolean value is passed
+      if (disableBlinkingOnEnd) {
+        // Disable blinking right away
+        animationStyleConfig = `typing ${
+          typeSpeed / 1000
+        }s steps(20, end), stop-blink ${
+          blinkingSpeed / 1000
+        }s steps(1) infinite`;
+      } else {
+        // Do not disable blinking
+        animationStyleConfig = `typing ${
+          typeSpeed / 1000
+        }s steps(20, end), blink ${blinkingSpeed / 1000}s steps(1) infinite`;
+      }
+    } else {
+      // Blink for some time and then stop
+      animationStyleConfig = `blink ${
+        blinkingSpeed / 1000
+      }s steps(1) infinite, stop-blink ${blinkingSpeed / 1000}s ${
+        (disableBlinkingOnEnd * blinkingSpeed) / 1000
+      }s steps(1) infinite
+      `;
+    }
+  } else {
+    // Animation is ongoing. Continue blinking
+    animationStyleConfig = `typing ${typeSpeed / 1000}s steps(20, end), blink ${
+      blinkingSpeed / 1000
+    }s steps(1) infinite`;
+  }
 
   const letterSpacingStyleConfig = `${letterSpacing}em`;
 
@@ -126,7 +209,7 @@ const Typing = (props) => {
 
   const paddingRightStyleConfig = `${cursorPadding}em`;
 
-  // Create a React element based on the html element supplied by the user
+  // Create a React element based on the html element or React Component supplied by the user
   const reactElement = createElement(
     htmlElement,
     {
@@ -158,12 +241,16 @@ Typing.propTypes = {
   typeSpeed: PropTypes.number,
   suppressEmptyArray: PropTypes.bool,
   ignoreInitialDelay: PropTypes.bool,
-  element: PropTypes.oneOf([PropTypes.string, PropTypes.element]),
+  element: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   styleClass: PropTypes.string,
   letterSpacing: PropTypes.number,
   cursorThickness: PropTypes.number,
   cursorColor: PropTypes.string,
   cursorPadding: PropTypes.number,
+  deleteSpeed: PropTypes.number,
+  shouldDelete: PropTypes.bool,
+  blinkingSpeed: PropTypes.number,
+  disableBlinkingOnEnd: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
 };
 
 Typing.defaultProps = {
@@ -176,6 +263,10 @@ Typing.defaultProps = {
   cursorThickness: 0.15,
   cursorColor: "black",
   cursorPadding: 0.1,
+  shouldDelete: true,
+  deleteSpeed: 30,
+  blinkingSpeed: 1000,
+  disableBlinkingOnEnd: 3,
 };
 
 export { Typing };
