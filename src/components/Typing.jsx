@@ -4,7 +4,7 @@ import "./Typing.css";
 
 /**
  * @function Typing
- * A UI Component to render typing-effect
+ * An UI Component to render typing-effect
  *
  * @param {string || array} text
  *  A string or an array of string to be displayed
@@ -89,7 +89,7 @@ const Typing = (props) => {
 
   const timer = useRef(null);
 
-  // Unmounts the timer on component unmount and
+  // Unmounts the timer on component unmount
   const unmountTimer = () => {
     const timeoutInfo = timer.current;
     if (timeoutInfo) {
