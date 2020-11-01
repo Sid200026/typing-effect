@@ -6,26 +6,27 @@ import "./App.css";
 // Demo Code to use Typing Component
 
 const App = () => {
+  const sequence = [
+    { content: "Hey how re\n u doin", config: { cursorColor: "orange" } },
+    { content: 130 },
+    { content: -10 },
+    { content: 250 },
+    { content: " are you doing." },
+  ];
   return (
     <>
       <TypingStep
-        sequence={[
-          { content: "Hey how re u" },
-          { content: -4 },
-          { content: 300 },
-          { content: " are you doing." },
-        ]}
-        typeSpeed={60}
+        sequence={sequence}
+        typeSpeed={40}
         ignoreInitialDelay={false}
         suppressEmptyArray
         element="h3"
-        // styleClass="special_class"
         letterSpacing={0.01}
         cursorThickness={0.12}
         cursorColor="black"
-        deleteSpeed={60}
+        deleteSpeed={30}
         blinkingSpeed={1000}
-        disableBlinkingOnEnd={5}
+        disableBlinkingOnEnd={false}
       />
       {/* <Typing
         text={[
