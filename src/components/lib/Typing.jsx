@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback, createElement } from "react";
 import PropTypes from "prop-types";
+import { initialConfig } from "./config";
 import "./Typing.css";
 
 /**
@@ -34,6 +35,8 @@ import "./Typing.css";
  *  Blinking speed of cursor in milliseconds
  * @param {boolean || number} disableBlinkingOnEnd
  *  Disable blinking on end or wait for a few blinks
+ * @param {boolean} smartBackspace
+ *  Enables smart backspacing
  */
 const Typing = (props) => {
   const {
@@ -51,6 +54,7 @@ const Typing = (props) => {
     deleteSpeed,
     blinkingSpeed,
     disableBlinkingOnEnd,
+    smartBackspace,
   } = props;
 
   let firstText = "";
@@ -97,6 +101,15 @@ const Typing = (props) => {
       timer.current = undefined;
       clearTimeout(timeoutInfo);
     }
+  };
+
+  const returnLastMatch = (string1, string2) => {
+    let i = 0;
+    let j = 0;
+    for (; i < string1.length && j < string2.length; i++, j++) {
+      if (string1.charAt(i) !== string2.charAt(j)) return i - 1;
+    }
+    return i;
   };
 
   // React Callback function used to update the rendered text
@@ -149,13 +162,33 @@ const Typing = (props) => {
       });
       return true;
     }
+    if (
+      currentText.isDeleting &&
+      smartBackspace &&
+      currentIndex < text.length - 1
+    ) {
+      // Smart Backspace enabled and not the last texty
+      const lastMatch = returnLastMatch(
+        currentTextContent,
+        text[currentIndex + 1]
+      );
+      if (currentTextLength === lastMatch) {
+        setCurrentText({
+          index: currentIndex + 1,
+          text: text[currentIndex + 1],
+          length: lastMatch + 1,
+          isDeleting: false,
+        });
+        return true;
+      }
+    }
     if (currentText.isDeleting) {
       setCurrentText({ ...currentText, length: currentTextLength - 1 }); // Decrement the length in other case
     } else {
       setCurrentText({ ...currentText, length: currentTextLength + 1 }); // Increment the length in other case
     }
     return true;
-  }, [currentText, text, shouldDelete, ignoreInitialDelay]);
+  }, [currentText, text, shouldDelete, ignoreInitialDelay, smartBackspace]);
 
   // Decide whether to set delete speed or type speed
   const setTimeOutSpeed = currentText.isDeleting ? deleteSpeed : typeSpeed;
@@ -251,22 +284,24 @@ Typing.propTypes = {
   shouldDelete: PropTypes.bool,
   blinkingSpeed: PropTypes.number,
   disableBlinkingOnEnd: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+  smartBackspace: PropTypes.bool,
 };
 
 Typing.defaultProps = {
-  typeSpeed: 50,
-  suppressEmptyArray: false,
-  ignoreInitialDelay: true,
-  element: "h4",
-  styleClass: "",
-  letterSpacing: 0.0,
-  cursorThickness: 0.15,
-  cursorColor: "black",
-  cursorPadding: 0.1,
-  shouldDelete: true,
-  deleteSpeed: 30,
-  blinkingSpeed: 1000,
-  disableBlinkingOnEnd: 3,
+  typeSpeed: initialConfig.typeSpeed,
+  suppressEmptyArray: initialConfig.suppressEmptyArray,
+  ignoreInitialDelay: initialConfig.ignoreInitialDelay,
+  element: initialConfig.element,
+  styleClass: initialConfig.styleClass,
+  letterSpacing: initialConfig.letterSpacing,
+  cursorThickness: initialConfig.cursorThickness,
+  cursorColor: initialConfig.cursorColor,
+  cursorPadding: initialConfig.cursorPadding,
+  shouldDelete: initialConfig.shouldDelete,
+  deleteSpeed: initialConfig.deleteSpeed,
+  blinkingSpeed: initialConfig.blinkingSpeed,
+  disableBlinkingOnEnd: initialConfig.disableBlinkingOnEnd,
+  smartBackspace: initialConfig.smartBackspace,
 };
 
 export { Typing };

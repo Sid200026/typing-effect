@@ -1,5 +1,6 @@
 import { useState, useRef, createElement, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
+import { initialConfig } from "./config";
 import "./TypingStep.css";
 
 /**
@@ -405,17 +406,17 @@ TypingStep.propTypes = {
 };
 
 TypingStep.defaultProps = {
-  ignoreInitialDelay: true,
-  disableBlinkingOnEnd: 3,
-  typeSpeed: 50,
-  element: "h4",
-  styleClass: "",
-  letterSpacing: 0.0,
-  cursorThickness: 0.15,
-  cursorColor: "black",
-  cursorPadding: 0.15,
-  deleteSpeed: 30,
-  blinkingSpeed: 530,
+  typeSpeed: initialConfig.typeSpeed,
+  ignoreInitialDelay: initialConfig.ignoreInitialDelay,
+  element: initialConfig.element,
+  styleClass: initialConfig.styleClass,
+  letterSpacing: initialConfig.letterSpacing,
+  cursorThickness: initialConfig.cursorThickness,
+  cursorColor: initialConfig.cursorColor,
+  cursorPadding: initialConfig.cursorPadding,
+  deleteSpeed: initialConfig.deleteSpeed,
+  blinkingSpeed: initialConfig.blinkingSpeed,
+  disableBlinkingOnEnd: initialConfig.disableBlinkingOnEnd,
 };
 
 export { TypingStep };
