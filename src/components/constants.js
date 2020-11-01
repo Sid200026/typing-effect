@@ -1,0 +1,3 @@
+const HUMAN_TYPING_SPEED = 95;
+
+export { HUMAN_TYPING_SPEED };

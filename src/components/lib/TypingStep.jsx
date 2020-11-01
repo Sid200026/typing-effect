@@ -292,6 +292,14 @@ const TypingStep = (props) => {
   let animationStyleConfig = "";
 
   if (isComplete) {
+    // Set to global properties on completion
+    typeSpeedCurrent = typeSpeed;
+    blinkingSpeedCurrent = blinkingSpeed;
+    letterSpacingCurrent = letterSpacing;
+    cursorThicknessCurrent = cursorThickness;
+    cursorColorCurrent = cursorColor;
+    cursorPaddingCurrent = cursorPadding;
+    styleClassCurrent = styleClass;
     if (typeof disableBlinkingOnEnd === "boolean") {
       // Check if a boolean value is passed
       if (disableBlinkingOnEnd) {

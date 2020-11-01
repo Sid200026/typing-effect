@@ -1,14 +1,24 @@
 {
   "name": "typing-effect",
+  "description": "UI Component to render typing effect in react",
   "version": "1.0.0",
   "private": false,
+  "peerDependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
   "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
     "react-scripts": "4.0.0",
     "web-vitals": "^0.2.4"
   },
@@ -37,8 +47,23 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/preset-react": "^7.12.1"
-  }
+  "author": {
+    "name": "Siddharth Singha Roy",
+    "email": "siddharthsingharoy@gmail.com"
+  },
+  "keywords": [
+    "typing-effect",
+    "react",
+    "typed.js",
+    "typewrite"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sid200026/typing-effect"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ]
 }
