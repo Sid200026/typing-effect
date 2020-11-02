@@ -7,7 +7,7 @@
 <img src="https://img.shields.io/bundlephobia/minzip/typing-effect-reactjs" alt="Size" />
 [![NPM](https://nodei.co/npm/typing-effect-reactjs.png)](https://npmjs.org/package/typing-effect-reactjs)
 
-<img src="https://github.com/Sid200026/typing-effect/blob/master/docs/demo.gif" width="650"/>
+<img src="https://github.com/Sid200026/typing-effect/raw/master/docs/demo.gif" width="650"/>
 
 <a href="https://typing-effect-sid200026.netlify.app/">View Demo</a> ||
 <a href="https://sid200026.github.io/typing-effect/">Documentation</a>
