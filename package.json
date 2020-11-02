@@ -1,7 +1,7 @@
 {
-  "name": "typing-effect",
+  "name": "typing-effect-reactjs",
   "description": "UI Component to render typing effect in react",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": false,
   "peerDependencies": {
     "prop-types": "^15.7.2",
@@ -62,8 +62,17 @@
     "type": "git",
     "url": "https://github.com/Sid200026/typing-effect"
   },
+  "homepage": "https://github.com/Sid200026/typing-effect",
+  "bugs": {
+    "url": "https://github.com/Sid200026/typing-effect/issues"
+  },
   "files": [
     "dist",
     "README.md"
-  ]
+  ],
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  }
 }
