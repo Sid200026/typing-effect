@@ -1,5 +1,5 @@
 import React from "react";
-import { Typing } from "../components/Typing.jsx";
+import { Typing } from "../components/Typing";
 
 const Example1 = (props) => (
   <>

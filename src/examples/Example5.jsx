@@ -1,5 +1,5 @@
 import React from "react";
-import { TypingStep } from "../components/TypingStep.jsx";
+import { TypingStep } from "../components/TypingStep";
 import "./Example5.css";
 
 const sequence = [

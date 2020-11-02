@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { initialConfig } from "./lib/config";
-import { TypingStep as LibTypingStep } from "./lib/TypingStep.js";
+import { initialConfig } from "./config";
+import { TypingStep as LibTypingStep } from "./LibTypingStep";
 
 /**
  * @class TypingStep

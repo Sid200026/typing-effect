@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { initialConfig } from "./lib/config";
-import { Typing as LibTyping } from "./lib/Typing.js";
+import { initialConfig } from "./config";
+import { Typing as LibTyping } from "./LibTyping";
 
 class Typing extends React.Component {
   // eslint-disable-next-line no-useless-constructor

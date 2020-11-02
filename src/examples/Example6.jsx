@@ -1,5 +1,5 @@
 import React from "react";
-import { TypingStep } from "../components/TypingStep.jsx";
+import { TypingStep } from "../components/TypingStep";
 import { HUMAN_TYPING_SPEED } from "../components/constants";
 import "./Example6.css";
 
