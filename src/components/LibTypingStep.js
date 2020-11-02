@@ -1,4 +1,10 @@
-import { useState, useRef, createElement, useEffect, useCallback } from "react";
+import React, {
+  useState,
+  useRef,
+  createElement,
+  useEffect,
+  useCallback,
+} from "react";
 import PropTypes from "prop-types";
 import { initialConfig } from "./config";
 import "./TypingStep.css";

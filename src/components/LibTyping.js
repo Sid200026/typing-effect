@@ -1,4 +1,10 @@
-import { useState, useEffect, useRef, useCallback, createElement } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  createElement,
+} from "react";
 import PropTypes from "prop-types";
 import { initialConfig } from "./config";
 import "./Typing.css";
