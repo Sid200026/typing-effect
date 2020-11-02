@@ -5,7 +5,8 @@
 
 <img src="https://github.com/Sid200026/typing-effect/blob/master/docs/demo.gif" width="650"/>
 
-<a href="https://typing-effect-sid200026.netlify.app/">View Demo</a>
+<a href="https://typing-effect-sid200026.netlify.app/">View Demo</a> || 
+<a href="https://sid200026.github.io/typing-effect/">Documentation</a>
 
 ---
 
@@ -247,6 +248,13 @@ A set of local configs that can override the global configs. Overriding will occ
 |     cursorPadding    |           number          |                                 Distance between cursor and the last word                                 |      0.15     |
 |     blinkingSpeed    |           number          |                                       Rate at which to blink cursor                                       |      530      |
 | disableBlinkingOnEnd |     boolean or number     | Whether to disable blinking on end ( true, false ) or number of times to blink before stopping ( number ) |       5       |
+
+**Example Code**
+
+<a href="https://github.com/Sid200026/typing-effect/blob/master/src/examples/Example4.jsx">Example 4</a>
+<a href="https://github.com/Sid200026/typing-effect/blob/master/src/examples/Example5.jsx">Example 5</a>
+<a href="https://github.com/Sid200026/typing-effect/blob/master/src/examples/Example6.jsx">Example 6</a>
+<a href="https://github.com/Sid200026/typing-effect/blob/master/src/examples/Example7.jsx">Example 7</a>
 
 ---
 
