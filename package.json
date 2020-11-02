@@ -26,8 +26,9 @@
     "start": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build": "rm -rf dist && NODE_ENV=production babel ./src/components --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
-    "publish:npm": "set NODE_ENV=production && rm -rf dist && mkdir dist &&  babel ./src/components -d dist --copy-files"
+    "build": "react-scripts build",
+    "publish:npm": "rm -rf dist && NODE_ENV=production babel ./src/components --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
+    "
   },
   "eslintConfig": {
     "extends": [
