@@ -66,6 +66,12 @@ npm install
 npm start
 ```
 
+**Import**
+
+```jsx
+import {Typing, TypingStep} from "typing-effect-reactjs";
+```
+
 ---
 
 <a name="documentation" />
