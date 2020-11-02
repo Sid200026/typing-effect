@@ -1,9 +1,9 @@
 {
   "name": "typing-effect-reactjs",
   "description": "React UI component to render aesthetic yet elegant typing effect",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "private": false,
-  "peerDependencies" : {
+  "peerDependencies": {
     "react": "^16.14.0",
     "react-dom": "^16.14.0"
   },
