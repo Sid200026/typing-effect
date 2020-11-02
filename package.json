@@ -11,6 +11,7 @@
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/preset-react": "^7.12.1",
+    "@babel/preset-stage-2": "^7.8.3",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -22,7 +23,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "publish:npm": "rm -rf dist && mkdir dist &&  babel ./src/components -d dist --copy-files"
+    "publish:npm": "NODE_ENV=production && rm -rf dist && mkdir dist &&  babel ./src/components -d dist --copy-files"
   },
   "eslintConfig": {
     "extends": [
@@ -72,5 +73,6 @@
       "@babel/preset-react"
     ]
   },
-  "main": "dist/index.js"
+  "main": "dist/index.js",
+  "module": "dist/index.js"
 }
