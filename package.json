@@ -55,14 +55,16 @@
     "typing-effect",
     "react",
     "typed.js",
-    "typewrite"
+    "typewriter",
+    "typewrite",
+    "typing"
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/Sid200026/typing-effect"
   },
-  "homepage": "https://github.com/Sid200026/typing-effect",
+  "homepage": "https://sid200026.github.io/typing-effect/",
   "bugs": {
     "url": "https://github.com/Sid200026/typing-effect/issues"
   },
