@@ -5,6 +5,7 @@
 [![npm version](https://badge.fury.io/js/typing-effect-reactjs.svg)](https://badge.fury.io/js/typing-effect-reactjs)
 <img src="https://img.shields.io/npm/dm/typing-effect-reactjs" alt="Downloads" />
 <img src="https://img.shields.io/bundlephobia/minzip/typing-effect-reactjs" alt="Size" />
+[![NPM](https://nodei.co/npm/typing-effect-reactjs.png)](https://npmjs.org/package/typing-effect-reactjs)
 
 <img src="https://github.com/Sid200026/typing-effect/blob/master/docs/demo.gif" width="650"/>
 
