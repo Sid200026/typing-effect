@@ -76,5 +76,6 @@
     "presets": [
       "@babel/preset-react"
     ]
-  }
+  },
+  "main": "dist/index.js"
 }
