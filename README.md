@@ -81,8 +81,8 @@ import {Typing, TypingStep} from "typing-effect-reactjs";
 
 Typing-Effect library provides 2 UI Components that can be used to render aesthetically pleasing yet elegant typing effects
 
-1. <Typing /> : A simple UI Component that will satisfy the requirements 90% of the time
-2. <TypingStep /> : Fully customisable UI Component for advanced use cases
+1. ```<Typing />``` : A simple UI Component that will satisfy the requirements 90% of the time
+2. ```<TypingStep />``` : Fully customisable UI Component for advanced use cases
 
 <a name="typing" />
 
@@ -222,8 +222,8 @@ Structure of each command
 
 ```js
 {
-  // Command to be executed
-  content: config: {
+  content: // Command to be executed
+  config: {
     // List of configs that will override global configs
   }
 }
