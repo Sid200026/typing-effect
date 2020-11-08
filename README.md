@@ -28,7 +28,7 @@
 
 ## Introduction
 
-Typing-Effect is a UI Component for **React** which provides elegant typing effects with very few lines of code. Typing-Effect provides an effective way in Typing-Effect provides an effective way in
+Typing-Effect is a UI Component for **React** which provides elegant typing effects with very few lines of code. Typing-Effect provides an effective way in
 
 **Current Features**
 
