@@ -28,7 +28,7 @@
 
 ## Introduction
 
-Typing-Effect is an UI Component for **React** which provides elegant typing effects with a very few lines of code. Typing-Effect provides an effective way in
+Typing-Effect is a UI Component for **React** which provides elegant typing effects with very few lines of code. Typing-Effect provides an effective way in Typing-Effect provides an effective way in
 
 **Current Features**
 
@@ -70,7 +70,7 @@ npm start
 **Import**
 
 ```jsx
-import {Typing, TypingStep} from "typing-effect-reactjs";
+import { Typing, TypingStep } from "typing-effect-reactjs";
 ```
 
 ---
@@ -81,8 +81,8 @@ import {Typing, TypingStep} from "typing-effect-reactjs";
 
 Typing-Effect library provides 2 UI Components that can be used to render aesthetically pleasing yet elegant typing effects
 
-1. ```<Typing />``` : A simple UI Component that will satisfy the requirements 90% of the time
-2. ```<TypingStep />``` : Fully customisable UI Component for advanced use cases
+1. `<Typing />` : A simple UI Component that will satisfy the requirements 90% of the time
+2. `<TypingStep />` : Fully customisable UI Component for advanced use cases
 
 <a name="typing" />
 
@@ -126,7 +126,7 @@ Typing Component operates at sentence level ie. it does not support character op
 |    blinkingSpeed     |          number           |                                       Rate at which to blink cursor                                        |      530      |
 | disableBlinkingOnEnd |     boolean or number     | Whether to disable blinking on end ( true, false ) or number of times to blink before stopping ( number )  |       5       |
 |     shouldDelete     |          boolean          |                         Should delete the current text or just append the new text                         |     true      |
-|    smartBackspace    |          boolean          | Whether to delete only the minimal number of characters required to match the current string with the next |     true      |
+|    smartBackspace    |          boolean          | Whether to delete only the minimal number of characters required to match the current string with the next |     false     |
 
 **Example Code**
 
@@ -222,8 +222,8 @@ Structure of each command
 
 ```js
 {
-  content: // Command to be executed
-  config: {
+  // Command to be executed
+  content: config: {
     // List of configs that will override global configs
   }
 }

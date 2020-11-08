@@ -12,7 +12,7 @@ const initialConfig = {
   deleteSpeed: 30,
   blinkingSpeed: 530,
   disableBlinkingOnEnd: 5,
-  smartBackspace: true,
+  smartBackspace: false,
 };
 
 export { initialConfig };
