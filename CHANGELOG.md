@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ### Released
 
-- 1.4.1 : https://github.com/Sid200026/typing-effect/releases/tag/v1.3.2
+- 1.4.0 : https://github.com/Sid200026/typing-effect/releases/tag/v1.4.0
 
   - Changed default value for prop smartBackspace
 
